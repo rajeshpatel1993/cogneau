@@ -1,0 +1,19 @@
+<div class="p-grid">
+    <div class="p-col">
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <input type="text"  placeholder="Username" formControlName="username"/>
+
+            <select formControlName="role">
+                <option>Please select User role</option>
+                <option value="1">User</option>
+                <option value="2">Admin</option>
+            </select>
+
+        </form>
+
+        <p>
+            <button type="submit" (click)="login()" > Log In</button>
+        </p>
+    </div>
+   
+</div>
