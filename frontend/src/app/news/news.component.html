@@ -1,0 +1,18 @@
+<div class="container">
+    <form [formGroup]="searchForm" (ngSubmit)="search()">
+    <p>
+        Search text:
+    <input type="text" class="form-control"  formControlName="searchText" placeholder="search"/>
+</p>
+<p>
+    start date:
+    <input type="date" class="form-control"  formControlName="startdate" placeholder="start date">
+</p>
+<p>
+    <input type="date" class="form-control" formControlName="enddate" placeholder="end date">
+</p>
+<p>
+    <button type="submit" (click)="search()">Get Search</button>
+</p>
+</form>
+</div>

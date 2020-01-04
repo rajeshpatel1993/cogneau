@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {InputTextModule} from 'primeng/inputtext';
-import {DropdownModule} from 'primeng/dropdown';
+
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LoginService } from '../services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   public loginForm : FormGroup;
-  constructor(private fb: FormBuilder  ) { 
+  constructor(private fb: FormBuilder, private loginService: LoginService, private router: Router  ) { 
 
 
   }
@@ -33,6 +34,14 @@ export class LoginComponent implements OnInit {
 
   login(){
     let {username, role} = this.loginForm.value;
-    console.log(username);
+    this.loginService.login(this.loginForm.value).subscribe(data => {
+      if(data){
+        this.router.navigate(['news']);
+
+      }
+    }, error=>{
+      console.log(error);
+    });
+    
   }
 }
